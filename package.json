@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "dist/src/app.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cp .env ./dist/.env",
     "start": "cp .env ./dist/.env && tsc && node dist/src/app.js",
     "vercel-build": "npm install && tsc",
     "vercel-start": "cp .env ./dist/.env && tsc && node dist/src/app.js",
