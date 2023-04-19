@@ -14,7 +14,7 @@ export class GqlClient implements IGqlClient {
     constructor(){
         this.axiosInstance = axios.create({
             baseURL: process.env.GQL_URL,
-            timeout: 1000,
+            timeout: 5000,
             headers: {
                 Authorization: `Bearer ${process.env.GQL_TOKEN}`,
                 'Content-Type': 'application/json'

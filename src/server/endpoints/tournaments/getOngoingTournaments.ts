@@ -7,7 +7,7 @@ const getOngoingTournamentsUrl = '/tournaments/ongoing'
 async function getOngoingTournamentsHandler(req: Request, res: Response){
     try { 
         const store = new GqlStore();
-        const tournaments = await store.getOngoingTournaments();
+        const tournaments = (await store.getOngoingTournaments(100)).filter(tournament => tournament.numAttendees !== 0 ? 1 : 0);
 
         res.status(200).send(tournaments);
     } catch (e) {

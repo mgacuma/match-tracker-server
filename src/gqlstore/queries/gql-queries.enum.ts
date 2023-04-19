@@ -35,6 +35,8 @@ export enum GqlQueries {
           sortBy: "startAt ASC", 
           filter: {
             upcoming: true
+            hasBannerImages:true
+            countryCode: "US"
           }
         }
       ) {
@@ -63,29 +65,54 @@ export enum GqlQueries {
     }`,
 
     getEventsInTournament=`query EventsInTournament($tournamentId: ID) {
-      tournament(id:$tournamentId){
-        events{
+      tournament(id: $tournamentId) {
+        events {
           id
           name
           slug
-          startAt,
-          updatedAt,
-          state,
+          startAt
+          updatedAt
+          state
           numEntrants
           type
-          
           phases {
             id
             name
-            phaseGroups{
-              nodes {
-                displayIdentifier
+            state
+            bracketType
+          }
+        }
+      }
+    }`,
+
+    getSetsInPhase = `query SetsInPhase($phaseId: ID) {
+      phase(id: $phaseId) {
+        id
+        bracketType
+        state
+        name
+        phaseOrder
+        sets(perPage: 10, sortType: MAGIC, filters: {hideEmpty: true}) {
+          nodes {
+            id
+            fullRoundText
+            identifier
+            state
+            startAt
+            completedAt
+            winnerId
+            slots {
+              id
+              entrant {
+                name
+                initialSeedNum
               }
             }
           }
         }
       }
-    }`,
+    }    
+    `,
     
 
     getTopGames = `query TopGames($perPage: Int) {videogames(query:{perPage:$perPage, sortBy: "desc"}){nodes {name}}}`

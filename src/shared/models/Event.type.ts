@@ -6,8 +6,8 @@ export type Event = {
     slug: string,
     startAt: string,
     updatedAt: string,
-    state: number,
+    state: string,
     numEntrants: number,
-    videogame: { name: string },
-    type: number
+    type: number,
+    phases: Phase[]
 }

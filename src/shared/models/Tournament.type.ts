@@ -1,4 +1,5 @@
-import { Image } from './Image.type'
+import { Event } from "./Event.type"
+
 export type Tournament = {
     id: number,
     name: string,
@@ -7,7 +8,12 @@ export type Tournament = {
     city?: string,
     addrState?: string,
     countryCode?: string,
-    startAt: string,
-    endAt: string,
-    images?: Image[]
+    startAt: number,
+    endAt: number,
+    numAttendees: number,
+    events: Event[]
+    images?: {
+            url?: string,
+            type?: string
+        }[]
 }
