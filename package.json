@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "main": "dist/src/app.js",
   "scripts": {
-    "build": "tsc && cp .env ./dist/.env",
+    "build": "tsc",
     "start": "cp .env ./dist/.env && tsc && node dist/src/app.js",
     "vercel-build": "npm install && tsc",
-    "vercel-start": "cp .env ./dist/.env && tsc && node dist/src/app.js",
+    "vercel-start": "npm install && tsc && node dist/src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "14.x"
   },
   "author": "",
   "license": "ISC",
